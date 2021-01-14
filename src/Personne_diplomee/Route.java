@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public class Route extends Case {
 
     private String sens_de_circulation;
@@ -40,5 +42,10 @@ public class Route extends Case {
                 p.setSatiete(p.getSatiete()-2);
             }
         }
+    }
+
+    @Override
+    public void paint(Graphics g) {
+
     }
 }

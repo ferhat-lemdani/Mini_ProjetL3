@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public class Trottoir extends Case {
     String sens_de_circulation;
     Piege piege;
@@ -38,5 +40,10 @@ public class Trottoir extends Case {
                 p.setSatiete(p.getSatiete()-1);
             }
         }
+    }
+
+    @Override
+    public void paint(Graphics g) {
+
     }
 }

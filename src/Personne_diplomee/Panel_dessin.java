@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Panel_dessin extends JPanel implements ActionListener, KeyListener {
 
 
-
+    Ville ville;
 
     /*public JPanel affiche(){
             this.setBounds(0,0,500,500);
@@ -22,41 +22,49 @@ public class Panel_dessin extends JPanel implements ActionListener, KeyListener 
             super.paintComponent(g);
             //g.setColor(Color.RED);
           //  g.drawRect(10,10,200,200);
-            Graphics2D g2 = (Graphics2D) g;
-            g2.fill(new Ellipse2D.Double(x,y,40,40));
+           ville.paint(g);
         }
         Timer t = new Timer(5, this);
-        double x=0, y=0, velx=0, vely=0;
 
-        public Panel_dessin(){
+
+        public Panel_dessin(Ville ville){
+            this.ville=ville;
             t.start();
             addKeyListener(this);
             setFocusable(true);
             setFocusTraversalKeysEnabled(false);
+            setSize(500,500);
         }
          public  void actionPerformed(ActionEvent e){
             repaint();
-            x+= velx;
-            y+=vely;
+
          }
 
          public void up(){
-            vely=-1.5;
-            velx=0;
+            Case future_case= this.ville.getCases()[this.ville.p.getXcase()][this.ville.p.getYcase()-1];
+
+            if(future_case.getClass().getName()=="case_Grisee"){
+            System.out.println("Can't move it's darkness");}
+            else {
+                this.ville.p.se_deplacer(this.ville, Direction.Haut);
+                future_case.effet_Case(this.ville.p);
+            }
+
+
          }
 
     public void down(){
-        vely=1.5;
-        velx=0;
+        this.ville.p.se_deplacer(this.ville,Direction.Bas);
+
     }
          public void left(){
-            vely=-1.5;
-            velx=0;
+             this.ville.p.se_deplacer(this.ville,Direction.Gauche);
+
         }
 
         public void right(){
-            vely=1.5;
-            velx=0;
+            this.ville.p.se_deplacer(this.ville,Direction.Droite);
+
         }
 
 

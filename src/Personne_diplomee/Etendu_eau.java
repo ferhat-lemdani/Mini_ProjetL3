@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public class Etendu_eau extends Case{
 
 
@@ -12,6 +14,11 @@ public class Etendu_eau extends Case{
 
     @Override
     public void effet_Case(Personnage p) {
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
 
     }
 }

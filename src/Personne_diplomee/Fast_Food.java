@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public class Fast_Food extends Batiment {
 
     public Fast_Food(int x, int y,int surface, String couleur, int nombre_de_pieces){
@@ -12,5 +14,10 @@ public class Fast_Food extends Batiment {
         p.setMorale(p.getMorale()+10);
         p.setHydratation(p.getHydratation()+10);
         p.setVie(p.getVie()-5);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+
     }
 }

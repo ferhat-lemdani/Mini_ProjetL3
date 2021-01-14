@@ -1,5 +1,8 @@
 package Personne_diplomee;
 
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+
 public abstract class Personnage {
 
 
@@ -16,8 +19,26 @@ public abstract class Personnage {
     private int positionY;
     private String moyen_de_deplacement;
     private int nombre_arrestations;
+    private int xcase;
+    private int ycase;
 
-    public Personnage(int vie, boolean malade, int hydratation, int satiete, int morale, String pseudo, int nombre_diplome, boolean maillot_de_bain, boolean permis_de_conduire, int positionX, int positionY, String moyen_de_deplacement, int nombre_arrestations, int chance_diplome) {
+    public int getXcase() {
+        return xcase;
+    }
+
+    public void setXcase(int xcase) {
+        this.xcase = xcase;
+    }
+
+    public int getYcase() {
+        return ycase;
+    }
+
+    public void setYcase(int ycase) {
+        this.ycase = ycase;
+    }
+
+    public Personnage(int vie, boolean malade, int hydratation, int satiete, int morale, String pseudo, int nombre_diplome, boolean maillot_de_bain, boolean permis_de_conduire, int positionX, int positionY, String moyen_de_deplacement, int nombre_arrestations, int chance_diplome, int xcase, int ycase) {
         this.vie = vie;
         this.malade = malade;
         this.hydratation = hydratation;
@@ -32,6 +53,8 @@ public abstract class Personnage {
         this.moyen_de_deplacement = moyen_de_deplacement;
         this.nombre_arrestations = nombre_arrestations;
         this.chance_diplome = chance_diplome;
+        this.xcase=0;
+        this.ycase=0;
     }
 
     public int getChance_diplome() {
@@ -158,10 +181,22 @@ public abstract class Personnage {
         effet_action();
         int chance =(int)(Math.random()*100); //recuperer pourcentage de chance
 
-        if (d==Direction.Haut) this.setPositionY(this.getPositionY()-1);
-        else if (d==Direction.Bas) this.setPositionY(this.getPositionY()+1);
-        else if (d==Direction.Gauche) this.setPositionX(this.getPositionX()-1);
-        else if (d==Direction.Droite) this.setPositionX(this.getPositionX()+1);
+        if (d==Direction.Haut){
+            this.setPositionY(this.getPositionY()-50);
+            this.ycase=this.ycase-1;
+        }
+        else if (d==Direction.Bas) {
+            this.setPositionY(this.getPositionY()+50);
+            this.ycase=this.ycase+1;
+        }
+        else if (d==Direction.Gauche){
+            this.setPositionX(this.getPositionX()-50);
+            this.ycase=this.ycase-1;
+        }
+        else if (d==Direction.Droite) {
+            this.setPositionX(this.getPositionX()+50);
+            this.ycase=this.ycase+1;
+        }
 
         if (this.getMoyen_de_deplacement()=="en voiture"){
             if (chance<2) setVie(0);
@@ -181,5 +216,12 @@ public abstract class Personnage {
         }
     }
     public abstract void effet_action();
+
+    public void paint(Graphics g){
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(Color.BLACK);
+        g2.fill(new Ellipse2D.Double(this.positionX,this.positionY,40,40));
+
+    }
 
 }

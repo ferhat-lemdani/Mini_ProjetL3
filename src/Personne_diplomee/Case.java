@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public abstract class Case {
 
     int position_x;
@@ -28,4 +30,6 @@ public abstract class Case {
     }
 
     public abstract void effet_Case(Personnage p);
+
+    public abstract void paint(Graphics g);
 }

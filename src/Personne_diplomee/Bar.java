@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public class Bar extends Batiment {
 
     public Bar(int x, int y,int surface, String couleur, int nombre_de_pieces){
@@ -14,6 +16,11 @@ public class Bar extends Batiment {
         p.setVie(p.getVie()-3);
         p.setMorale(p.getMorale()+10);
         p.setHydratation(p.getHydratation()+25);
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
 
     }
 }

@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public abstract class Batiment extends Case {
     private int surface;
     private String couleur;
@@ -38,4 +40,8 @@ public abstract class Batiment extends Case {
     }
 
 
+    @Override
+    public void paint(Graphics g) {
+
+    }
 }

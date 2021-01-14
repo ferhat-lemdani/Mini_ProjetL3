@@ -1,5 +1,7 @@
 package Personne_diplomee;
 
+import java.awt.*;
+
 public class Bibliotheque extends Batiment {
 
     public Bibliotheque(int x, int y, int surface, String couleur, int nombre_de_pieces ){
@@ -12,5 +14,10 @@ public class Bibliotheque extends Batiment {
         int chance =(int) (Math.random()*100);
         p.setMorale(p.getMorale()+20);
         if (chance<5) p.setChance_diplome(p.getChance_diplome()+10);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+
     }
 }
