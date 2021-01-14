@@ -40,31 +40,71 @@ public class Panel_dessin extends JPanel implements ActionListener, KeyListener 
 
          }
 
+
          public void up(){
-            Case future_case= this.ville.getCases()[this.ville.p.getXcase()][this.ville.p.getYcase()-1];
-
-            if(future_case.getClass().getName()=="case_Grisee"){
-            System.out.println("Can't move it's darkness");}
-            else {
-                this.ville.p.se_deplacer(this.ville, Direction.Haut);
-                future_case.effet_Case(this.ville.p);
-            }
 
 
+             if (this.ville.p.getYcase()>0) {
+                        System.out.println("iffagh");
+                 Case future_case = this.ville.getCases()[this.ville.p.getXcase()][this.ville.p.getYcase() - 1];
+
+
+                 if (future_case.getClass().getName() == "case_Grisee") {
+                     System.out.println("Can't move it's darkness");
+                 } else {
+                     this.ville.p.se_deplacer(this.ville, Direction.Haut);
+
+                     future_case.effet_Case(this.ville.p);
+                 }
+             }
          }
 
     public void down(){
-        this.ville.p.se_deplacer(this.ville,Direction.Bas);
+        if (this.ville.p.getYcase()<9) {
+
+            Case future_case = this.ville.getCases()[this.ville.p.getXcase()][this.ville.p.getYcase() + 1];
+
+
+            if (future_case.getClass().getName() == "case_Grisee") {
+                System.out.println("Can't move it's darkness");
+            } else {
+                this.ville.p.se_deplacer(this.ville, Direction.Bas);
+
+                future_case.effet_Case(this.ville.p);
+            }
+        }
 
     }
          public void left(){
-             this.ville.p.se_deplacer(this.ville,Direction.Gauche);
+             if (this.ville.p.getXcase()>0) {
 
+                 Case future_case = this.ville.getCases()[this.ville.p.getXcase()-1][this.ville.p.getYcase() ];
+
+
+                 if (future_case.getClass().getName() == "case_Grisee") {
+                     System.out.println("Can't move it's darkness");
+                 } else {
+                     this.ville.p.se_deplacer(this.ville, Direction.Gauche);
+
+                     future_case.effet_Case(this.ville.p);
+                 }
+             }
         }
 
         public void right(){
-            this.ville.p.se_deplacer(this.ville,Direction.Droite);
+            if (this.ville.p.getXcase()<9) {
 
+                Case future_case = this.ville.getCases()[this.ville.p.getXcase()+1][this.ville.p.getYcase() ];
+
+
+                if (future_case.getClass().getName() == "case_Grisee") {
+                    System.out.println("Can't move it's darkness");
+                } else {
+                    this.ville.p.se_deplacer(this.ville, Direction.Droite);
+
+                    future_case.effet_Case(this.ville.p);
+                }
+            }
         }
 
 
